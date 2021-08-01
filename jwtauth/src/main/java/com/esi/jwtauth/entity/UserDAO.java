@@ -24,5 +24,11 @@ public class UserDAO {
     private String role;
     @Column
     private String state; // active, inactive
+    
+    @JsonIgnore
+    @ManyToOne
+    private UserDAO parent;
+    @OneToMany(mappedBy="parent")
+    private Collection<UserDAO> children;
 
 }
