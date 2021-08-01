@@ -27,6 +27,10 @@ public class UserService {
         public UserDAO getUserById(Long idUsr){
             return userRepository.findById(idUsr).orElse(null);
         }
+    
+        public Collection<UserDAO> getUsersByParent(UserDAO parent){
+            return userRepository.findUserDAOByParent(parent);
+        }
 
         //delete method
         public void deleteUser(Long idUsr){
