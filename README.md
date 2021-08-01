@@ -26,4 +26,7 @@ https://www.youtube.com/watch?v=OKBvBoa8X40&list=PLZnMNSr-VrIiJ_a1Jfa3CKNIkDY-WG
 
  register + authentification  User
  Edit, Delete, Display User
+ 
+ ### other operations
+ view patients of specific Doctor
 
