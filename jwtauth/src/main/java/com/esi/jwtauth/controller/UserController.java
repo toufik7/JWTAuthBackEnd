@@ -24,6 +24,12 @@ public class UserController {
         public UserDAO getUserById(@PathVariable(name = "id") Long idUsr){
             return userService.getUserById(idUsr);
         }
+        
+        @GetMapping("/medecin/{id}/patients")
+        public Collection<UserDAO> getPatientsByMedecin(@PathVariable(name = "id") Long idUsr){
+            UserDAO medecin = userService.getUserById(idUsr);
+            return userService.getUsersByParent(medecin);
+        }
 
         @PutMapping("/update/{id}")
         public UserDAO updateUser(@RequestBody UserDAO user){
