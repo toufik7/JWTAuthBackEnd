@@ -28,6 +28,10 @@ public class UserService {
             return userRepository.findById(idUsr).orElse(null);
         }
     
+        public Patient getPatientById(Long idu){
+            return patientRepository.findById(idu).orElse(null);
+        }
+    
         public Collection<UserDAO> getUsersByParent(UserDAO parent){
             return userRepository.findUserDAOByParent(parent);
         }
