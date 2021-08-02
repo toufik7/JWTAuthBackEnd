@@ -41,4 +41,11 @@ public class UserController {
         public void deleteUser(@PathVariable(name = "id") Long idUsr){
             userService.deleteUser(idUsr);
         }
+        
+        // specific to patient -------------------------------------------
+        @GetMapping("/patient/{id}")
+        public Patient getPatientById(@PathVariable(name = "id") Long idu){
+            return userService.getPatientById(idu);
+        }
+
 }
