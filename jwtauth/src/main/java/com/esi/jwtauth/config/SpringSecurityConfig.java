@@ -52,21 +52,19 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         // We don't need CSRF for this example
         httpSecurity.cors().and().csrf().disable()
-                .authorizeRequests().antMatchers("/helloadmin",
-                "/users","/users/{id}","/users/update","/users/delete/{id}")
+                .authorizeRequests().antMatchers(
+                        "/helloadmin","/users","/users/{id}","/users/update","/users/delete/{id}")
                 .hasRole("ADMIN")
                 .antMatchers("/helloadministration")
                 .hasAnyRole("ADMINISTRATION")
-                .antMatchers("/hellomedecin")
-                .hasRole("MEDECIN")
-                .antMatchers("/hellomedecin")
+                .antMatchers("/hellomedecin","users/patient/{id}/Gly","/medecin/{id}/patients")
                 .hasRole("MEDECIN")
                 .antMatchers("/helloaidesoignant")
                 .hasRole("AIDE_SOIGNANT")
-                .antMatchers("/hellopatient")
+                .antMatchers("/hellopatient","users/patient/{id}/Gly")
                 .hasRole("PATIENT")
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .antMatchers("/authenticate","/register").permitAll().anyRequest().authenticated()
+                .antMatchers("/authenticate","/register","users/get/{username}","users/patient/{id}").permitAll().anyRequest().authenticated()
                 //if any exception occurs call this
                 .and().exceptionHandling()
                 .authenticationEntryPoint(unauthorizedHandler).and().
