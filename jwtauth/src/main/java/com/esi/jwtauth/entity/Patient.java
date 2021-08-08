@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -18,4 +19,8 @@ public class Patient extends UserDAO{
     private String prenom;
     @Column
     private String dateNaissance;
+
+    @ElementCollection
+    @Column(name = "glycemie_ids")
+    private List<Long> GlyId; // list of glycemie
 }
